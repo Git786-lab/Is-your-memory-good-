@@ -209,3 +209,57 @@ playAgainBtn.addEventListener("click", () => {
 
 // Initialize game on page load
 window.onload = initializeGame;
+const flipSound = document.getElementById("flip-sound");
+const matchSound = document.getElementById("match-sound");
+const winSound = document.getElementById("win-sound");
+const backgroundMusic = document.getElementById("background-music");
+
+// Play background music on game start
+backgroundMusic.play();
+
+// Function to play sounds
+function playSound(sound) {
+    if (!isMuted) sound.play();
+}
+
+// Play flip sound when a card is flipped
+function handleCardFlip(card) {
+    if (flippedCards.length < 2 && !card.classList.contains("flipped")) {
+        card.classList.add("flipped");
+        flippedCards.push(card);
+        playSound(flipSound);
+
+        if (flippedCards.length === 2) {
+            checkForMatch();
+        }
+    }
+}
+
+// Play match sound on successful match
+function checkForMatch() {
+    const [card1, card2] = flippedCards;
+    const symbol1 = card1.dataset.symbol;
+    const symbol2 = card2.dataset.symbol;
+
+    if (symbol1 === symbol2) {
+        matchedPairs += 1;
+        score += 10;
+        scoreDisplay.textContent = `Score: ${score}`;
+        flippedCards = [];
+        playSound(matchSound);
+
+        // Check for game win
+        if (matchedPairs === totalPairs) {
+            setTimeout(() => {
+                showWinPopup();
+                playSound(winSound);
+            }, 500);
+        }
+    } else {
+        setTimeout(() => {
+            card1.classList.remove("flipped");
+            card2.classList.remove("flipped");
+            flippedCards = [];
+        }, 1000);
+    }
+}
