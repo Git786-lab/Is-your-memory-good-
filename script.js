@@ -173,8 +173,36 @@ function checkForMatch() {
 // Show Win Popup
 function showWinPopup() {
     winPopup.style.display = "block";
+    createConfetti(); // Trigger confetti on win
     // Save score to leaderboard
     saveScoreToLeaderboard();
+}
+// Show Win Popup
+function showWinPopup() {
+    winPopup.style.display = "block";
+    createConfetti(); // Trigger confetti on win
+    saveScoreToLeaderboard();
+}
+
+// Function to create confetti effect
+function createConfetti() {
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.backgroundColor = getRandomColor();
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 3000); // Confetti disappears after 3 seconds
+    }
+}
+
+// Helper function to get random colors for confetti
+function getRandomColor() {
+    const colors = ["#ff6b6b", "#ffd700", "#48dbfb", "#1dd1a1", "#ff9f43"];
+    return colors[Math.floor(Math.random() * colors.length)];
 }
 
 // Save Score to Leaderboard
