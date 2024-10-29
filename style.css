@@ -171,3 +171,38 @@ header {
 .card.flipped .card-back {
     transform: rotateY(180deg);
 }
+/* Win Pop-up Animation */
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none; /* Initially hidden */
+    animation: popupScale 0.5s ease forwards;
+}
+
+@keyframes popupScale {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Confetti Animation */
+@keyframes confetti {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffd700;
+    opacity: 0;
+    animation: confetti 3s ease forwards;
+}
