@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <h2>Initializing game…</h2>
+        <p>Get ready!</p>
+    </div>
+
+    <!-- Main Game Area -->
+    <div class="game-container">
+        <!-- Header with Score and Timer -->
+        <header>
+            <div class="score-timer">
+                <span id="score">Score: 0</span>
+                <span id="timer">Time: 0s</span>
+            </div>
+            <div class="controls">
+                <button id="restart-btn">Restart</button>
+                <button id="mute-btn">Mute</button>
+                <button id="toggle-mode">Light/Dark Mode</button>
+            </div>
+        </header>
+
+        <!-- Game Grid -->
+        <section class="game-grid">
+            <!-- Cards will be dynamically added here by JavaScript -->
+        </section>
+
+        <!-- Pop-up for Game Over / Win -->
+        <div id="win-popup" class="popup">
+            <h2>Congratulations!</h2>
+            <p>You matched all the cards!</p>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+
+        <!-- Sidebar or Footer for Leaderboard -->
+        <aside class="leaderboard">
+            <h3>Leaderboard</h3>
+            <ul id="leaderboard-list">
+                <!-- Scores will be dynamically added here by JavaScript -->
+            </ul>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
